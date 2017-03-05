@@ -1,0 +1,10 @@
+{
+  "name": "node-ipc-socket-connector",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "node-ipc": "^8.10.3"
+  }
+}

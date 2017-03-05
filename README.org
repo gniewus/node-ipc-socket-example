@@ -1,0 +1,11 @@
+* node-ipc example using unix socket || windows pipe
+
+based on https://github.com/RIAEvangelist/node-ipc/blob/master/example/unixWindowsSocket/basic/
+
+we want to put multiple sockets into a single directory;
+
+assuming we have multiple clients and multiple servers, the clients need to
+discover which servers are serving the app they are interested in; if none
+exist, the client will do nothing.
+
+run =node server.js= (or not) and =node client.js= for an interaction
