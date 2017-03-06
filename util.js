@@ -1,7 +1,10 @@
 const os = require("os"),
       path = require("path"),
-      process = require("process"),
       fs = require("fs");
+
+if(!process) {
+    const process = require("process");
+}
 
 const PREFIX = "node-socket-" + process.getuid() + "-";
 
@@ -39,7 +42,7 @@ exports.ensure_socket_master_dir = function(maybe_appname) {
 
 exports.discover_socket_and_setup = function(maybe_appname, on_connect, handlers) {
     var appname = ensure_appname(maybe_appname),
-        procdir = make_socket_dir_path(maybe_appname);
+        procdir = make_socket_dir_path(appname);
 
     fs.readdirSync(procdir).forEach(sfile => {
         var spath = path.join(procdir, sfile)

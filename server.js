@@ -12,6 +12,7 @@ var logger = {
 };
 
 util.ipc_set_default_config(ipc.config);
+util.ensure_socket_master_dir(C.APP_NAME);
 
 ipc.config.appspace = C.APP_NAME;
 ipc.config.socketRoot = util.make_socket_root(C.APP_NAME);
