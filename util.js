@@ -44,6 +44,9 @@ exports.discover_socket_and_setup = function(maybe_appname, on_connect, handlers
     var appname = ensure_appname(maybe_appname),
         procdir = make_socket_dir_path(appname);
 
+    if(!fs.existsSync(procdir)) {
+        return;
+    }
     fs.readdirSync(procdir).forEach(sfile => {
         var spath = path.join(procdir, sfile)
 
