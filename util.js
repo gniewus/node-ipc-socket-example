@@ -6,7 +6,16 @@ if(!process) {
     const process = require("process");
 }
 
-const PREFIX = "node-socket-" + process.getuid() + "-";
+function getUserId() {
+    switch(process.platform) {
+        case "win32":
+            return process.env.USERNAME;
+        default:
+            return process.getuid();
+    }
+}
+
+const PREFIX = "node-socket-" + getUserId() + "-";
 
 function ensure_appname(maybe_appname) {
     return maybe_appname || ("proc-"+process.pid);
@@ -23,7 +32,7 @@ exports.make_socket_root = function(appname) {
     return path.join(
             sockdir,
             process.pid.toString()+"_"
-            +process.getuid()
+            +getUserId()
     )
 };
 
